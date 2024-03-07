@@ -1,14 +1,25 @@
 package bg.softuni.workshopPathfinder.model.DTO;
 
-public class UserRegistrationDTO {
+import jakarta.validation.constraints.*;
 
+public class UserRegistrationDTO {
+   @NotBlank
+   @Size(min = 5,max = 20)
     private String username;
-    private String fullName;
+   @NotBlank
+   @Size(min = 5,max = 20)
+    private String fullname;
+   @Email
     private String email;
 
+   @Min(0)
+   @Max(90)
     private int age;
-
+    @NotBlank
+    @Size(min = 5,max = 20)
     private String password;
+    @NotBlank
+    @Size(min = 5,max = 20)
     private String confirmPassword;
 
     public UserRegistrationDTO (){
@@ -23,12 +34,12 @@ public class UserRegistrationDTO {
         this.username = username;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getEmail() {

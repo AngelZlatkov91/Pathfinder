@@ -18,7 +18,7 @@ public class User extends BaseEntity{
     private String fullName;
     @Column(nullable = false)
     private int age;
-    @Column()
+    @Column(unique = true)
     private String email;
     @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(
@@ -32,8 +32,16 @@ public class User extends BaseEntity{
     @Enumerated(value = EnumType.STRING)
     private LevelEnum level;
 
+    public User(String userName, String password, String fullName, int age, String email) {
+       this();
+        this.userName = userName;
+        this.password = password;
+        this.fullName = fullName;
+        this.age = age;
+        this.email = email;
+    }
 
-public User (){
+    public User (){
     this.roles = new HashSet<>();
 }
 

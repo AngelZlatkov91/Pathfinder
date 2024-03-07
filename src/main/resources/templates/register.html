@@ -12,8 +12,10 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
+                    class="registration-form"
                     th:action="@{/register}"
                     th:method="post"
+                    th:object="${userRegistrationDTO}"
             >
                 <div>
                     <div class="col-auto">
@@ -21,6 +23,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="username"
+                               th:field="*{username}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
@@ -41,6 +45,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="fullname"
+                               th:field="*{fullname}"
+                               th:errorclass="is-invalid"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputFullName"
@@ -57,12 +63,15 @@
                     </div>
                     <div class="col-auto">
                         <input name="email"
+                               th:field="*{email}"
+                               th:errorclass="is-invalid"
 								required
                                type="email"
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
-                        <small id="emailError"
+                        <small th:if="${#fields.hasErrors('email')}"
+                                id="emailError"
                                class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
                     </div>
                 </div>
@@ -71,7 +80,10 @@
                         <label for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
-                        <input name="age" required
+                        <input name="age"
+                               th:field="*{age}"
+                               th:errorclass="is-invalid"
+                               required
                                type="number"
                                id="inputAge"
                                class="form-control"
@@ -87,6 +99,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="password"
+                               th:field="*{password}"
+                               th:errorclass="is-invalid"
                                 required minlength="5" maxlength="20"
                                type="password"
                                id="inputPassword"
@@ -105,6 +119,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword"
+                               th:field="*{confirmPassword}"
+                               th:errorclass="is-invalid"
                                 required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"
